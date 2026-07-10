@@ -1,0 +1,99 @@
+/* =====================================================
+   CHAT BUBBLE STYLES (BOT & USER)
+===================================================== */
+
+.eh-chat-bubble-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 4px;
+  animation: eh-bubble-entrance var(--transition-normal) forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes eh-bubble-entrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Row alignment based on sender */
+.eh-chat-bubble-row.is-user {
+  justify-content: flex-end;
+}
+
+.eh-chat-bubble-row.is-bot {
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+/* Bot Avatar styling */
+.eh-chat-bubble-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-round);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Bubble content wrapper */
+.eh-chat-bubble-content-wrapper {
+  max-width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.eh-chat-bubble-row.is-user .eh-chat-bubble-content-wrapper {
+  align-items: flex-end;
+}
+
+.eh-chat-bubble-row.is-bot .eh-chat-bubble-content-wrapper {
+  align-items: flex-start;
+}
+
+/* The actual text container bubble */
+.eh-chat-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Custom rounded corners depending on sender */
+.eh-chat-bubble-row.is-user .eh-chat-bubble {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border-bottom-right-radius: 2px;
+}
+
+.eh-chat-bubble-row.is-bot .eh-chat-bubble {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+/* Bold overrides within chat bubble content */
+.eh-chat-bubble strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+/* Timestamps for messages */
+.eh-chat-bubble-time {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding: 0 4px;
+}

@@ -1,0 +1,106 @@
+/* =====================================================
+   CHAT WIDGET HEADER STYLE
+===================================================== */
+
+.eh-chat-header {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-xs);
+  user-select: none;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+/* Brand and status info */
+.eh-chat-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eh-chat-header-icon {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+}
+
+.eh-chat-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.eh-chat-header-title {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.eh-chat-header-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.eh-chat-header-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #55f06e; /* high visibility green */
+  border-radius: var(--radius-round);
+  box-shadow: 0 0 8px #55f06e;
+  display: inline-block;
+  animation: eh-blink 2s infinite ease-in-out;
+}
+
+@keyframes eh-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Header action buttons */
+.eh-chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eh-chat-header-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  outline: none;
+}
+
+.eh-chat-header-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+}
+
+.eh-chat-header-btn:active {
+  transform: scale(0.92);
+}
+
+.eh-chat-header-btn:focus-visible {
+  outline: 2px solid var(--text-white);
+}
