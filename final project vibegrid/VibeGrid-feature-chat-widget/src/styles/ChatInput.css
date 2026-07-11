@@ -1,0 +1,80 @@
+/* =====================================================
+   CHAT INPUT CONTROLS STYLE
+===================================================== */
+
+.eh-chat-input-container {
+  padding: 12px 16px;
+  background-color: var(--surface);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  height: 64px;
+}
+
+/* Chat text entry box */
+.eh-chat-input-field {
+  flex: 1;
+  border: 1px solid var(--input-border);
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  outline: none;
+  resize: none;
+  height: 38px;
+  box-sizing: border-box;
+  line-height: 1.2;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.eh-chat-input-field::placeholder {
+  color: var(--input-placeholder);
+}
+
+.eh-chat-input-field:focus {
+  border-color: var(--input-focus);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 3px rgba(228, 61, 18, 0.15);
+}
+
+/* Submit message button */
+.eh-chat-send-btn {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), opacity var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  flex-shrink: 0;
+}
+
+.eh-chat-send-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 10px rgba(228, 61, 18, 0.2);
+}
+
+.eh-chat-send-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.95);
+}
+
+.eh-chat-send-btn:disabled {
+  background: var(--border-dark);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.eh-chat-send-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}

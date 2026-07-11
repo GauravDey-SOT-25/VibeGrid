@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub</title>
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./src/components/Navbar/navbar.css">
+    <link rel="stylesheet" href="./src/components/SearchPanel/search.css">
+    <link rel="stylesheet" href="./src/pages/EventDetails/eventDetails.css">
+    <link rel="stylesheet" href="./src/pages/Registration/registration.css">
+    <link rel="stylesheet" href="./src/pages/Home/home.css">
+    <link rel="stylesheet" href="./src/pages/Login/login.css">
+    <link rel="stylesheet" href="./src/components/Footer/footer.css">
+    <link rel="stylesheet" href="./src/components/Chat/chatWidget.css">
+</head>
+
+<body>
+    <script>
+        window.onerror = function(message, source, lineno, colno, error) {
+            const div = document.createElement('div');
+            div.style.position = 'fixed';
+            div.style.top = '10px';
+            div.style.left = '10px';
+            div.style.padding = '20px';
+            div.style.background = 'red';
+            div.style.color = 'white';
+            div.style.zIndex = '99999';
+            div.style.fontSize = '14px';
+            div.style.fontFamily = 'monospace';
+            div.innerText = 'ERROR: ' + message + '\nSource: ' + source + '\nLine: ' + lineno + '\nCol: ' + colno + '\nStack: ' + (error ? error.stack : '');
+            document.body.appendChild(div);
+            return false;
+        };
+        window.addEventListener('unhandledrejection', function(event) {
+            const div = document.createElement('div');
+            div.style.position = 'fixed';
+            div.style.top = '10px';
+            div.style.left = '10px';
+            div.style.padding = '20px';
+            div.style.background = 'orange';
+            div.style.color = 'white';
+            div.style.zIndex = '99999';
+            div.style.fontSize = '14px';
+            div.style.fontFamily = 'monospace';
+            div.innerText = 'UNHANDLED REJECTION: ' + event.reason;
+            document.body.appendChild(div);
+        });
+    </script>
+
+    <div id="navbar-root"></div>
+    
+    <main id="main-content">
+        <!-- Landing / Home Page View -->
+        <div id="landing-view"></div>
+
+        <!-- Browse Page View -->
+        <div id="browse-view" style="display: none;">
+            <div id="filter-container"></div>
+            <div id="events-container"></div>
+        </div>
+
+        <!-- Event Details Page View -->
+        <div id="details-view" style="display: none;"></div>
+
+        <!-- Event Registration Form Page View -->
+        <div id="registration-view" style="display: none;"></div>
+
+        <!-- My Registrations Dashboard View -->
+        <div id="my-registrations-view" style="display: none;"></div>
+
+        <!-- Login / Signup Page View -->
+        <div id="login-view" style="display: none;"></div>
+    </main>
+
+    <!-- Footer Mount Point -->
+    <div id="footer-root"></div>
+
+    <!-- Chat Widget Mount Point -->
+    <div id="chat-widget-root"></div>
+
+    <!-- Unified SPA Entry Point -->
+    <script type="module" src="./src/app.js"></script>
+
+</body>
+
+</html>

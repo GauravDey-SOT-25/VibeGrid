@@ -1,0 +1,63 @@
+/* =====================================================
+   TYPING INDICATOR DOTS ANIMATION
+===================================================== */
+
+.eh-typing-indicator-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  border-top-left-radius: 4px;
+  box-shadow: var(--shadow-xs);
+  width: fit-content;
+  animation: eh-indicator-entrance 0.25s ease-out;
+}
+
+@keyframes eh-indicator-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Three bouncing dots wrapper */
+.eh-typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.eh-typing-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--primary);
+  border-radius: var(--radius-round);
+  opacity: 0.6;
+  animation: eh-bounce 1.4s infinite ease-in-out both;
+}
+
+.eh-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.eh-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes eh-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}

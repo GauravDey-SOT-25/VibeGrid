@@ -1,0 +1,743 @@
+/* Import design tokens */
+@import '../../../theme.css';
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: min(1280px, 92%);
+    margin: auto;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 999;
+
+    background: var(--background-secondary);
+
+    border-bottom: 1px solid var(--border-light);
+
+    box-shadow: var(--shadow-xs);
+
+    transition: var(--transition-normal);
+
+}
+
+.navbar .container {
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.logo-icon {
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: var(--radius-md);
+
+    background: var(--gradient-primary);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: var(--text-white);
+
+    font-size: 20px;
+
+    box-shadow: 0 8px 18px var(--glow-primary);
+
+}
+
+.logo span {
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    color: var(--primary);
+
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    list-style: none;
+
+    gap: 34px;
+
+}
+
+.nav-links a {
+
+    position: relative;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    transition: var(--transition-normal);
+
+}
+
+.nav-links a:hover {
+
+    color: var(--primary);
+
+}
+
+/* Underline */
+
+.nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -26px;
+
+    transform: translateX(-50%);
+
+    width: 0;
+
+    height: 3px;
+
+    border-radius: 50px;
+
+    background: var(--primary);
+
+    transition: var(--transition-normal);
+
+}
+
+.nav-links a:hover::after {
+
+    width: 24px;
+
+}
+
+.nav-links a.active {
+
+    color: var(--primary);
+
+}
+
+.nav-links a.active::after {
+
+    width: 24px;
+
+}
+
+/* =====================================================
+   RIGHT SIDE
+===================================================== */
+
+.nav-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+/* =====================================================
+   NOTIFICATION
+===================================================== */
+
+.notification {
+
+    position: relative;
+
+    color: var(--text-secondary);
+
+    font-size: 20px;
+
+    transition: var(--transition-normal);
+
+}
+
+.notification:hover {
+
+    color: var(--primary);
+
+}
+
+.notification-dot {
+
+    position: absolute;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--secondary);
+
+    right: -2px;
+
+    top: 2px;
+
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 4px 6px;
+
+    cursor: pointer;
+
+    position: relative;
+
+}
+
+.profile img {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid var(--surface);
+
+}
+
+.profile span {
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color: var(--text-primary);
+
+}
+
+.profile i {
+
+    font-size: 12px;
+
+    color: var(--text-muted);
+
+    transition: .3s;
+
+}
+
+.profile:hover i {
+
+    transform: rotate(180deg);
+
+}
+
+/* PROFILE DROPDOWN MENU */
+.profile-dropdown {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    display: none;
+    flex-direction: column;
+    padding: 8px 0;
+    z-index: 1001;
+    animation: nav-dropdown-slide 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.profile-dropdown.show {
+    display: flex;
+}
+
+.profile-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.profile-dropdown a:hover {
+    background: var(--background-secondary);
+    color: var(--primary);
+    padding-left: 22px;
+}
+
+.profile-dropdown a i {
+    font-size: 16px;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.profile-dropdown a:hover i {
+    color: var(--primary);
+}
+
+@keyframes nav-dropdown-slide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================================
+   CREATE BUTTON
+===================================================== */
+
+.create-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 22px;
+
+    border-radius: var(--radius-round);
+
+    background: var(--primary);
+
+    color: var(--text-white);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: var(--transition-normal);
+
+    box-shadow: 0 10px 22px var(--glow-primary);
+
+}
+
+.create-btn:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-2px);
+
+}
+
+.create-btn i {
+
+    font-size: 13px;
+
+}
+
+/* =====================================================
+   HAMBURGER
+===================================================== */
+
+.hamburger {
+
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+}
+
+.hamburger span {
+
+    width: 26px;
+
+    height: 2px;
+
+    background: var(--text-primary);
+
+    border-radius: 20px;
+
+    transition: var(--transition-normal);
+
+}
+
+
+/*=====================================================
+MOBILE MENU
+=====================================================*/
+
+.mobile-menu {
+
+    position: fixed;
+
+    top: 78px;
+
+    left: 0;
+
+    width: 100%;
+
+    background: var(--background-secondary);
+
+    border-top: 1px solid var(--border-light);
+
+    box-shadow: var(--shadow-md);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 28px;
+
+    transform: translateY(-120%);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: var(--transition-normal);
+
+    z-index: 998;
+
+}
+
+.mobile-menu.active {
+
+    transform: translateY(0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+.mobile-menu a {
+
+    padding: 14px 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    border-radius: var(--radius-sm);
+
+    transition: var(--transition-fast);
+
+}
+
+.mobile-menu a:hover {
+
+    background: var(--surface);
+
+    color: var(--primary);
+
+    padding-left: 16px;
+
+}
+
+.mobile-menu a.active {
+
+    color: var(--primary);
+
+    background: rgba(228, 61, 18, .08);
+
+}
+
+.mobile-btn {
+
+    margin-top: 16px;
+
+    width: 100%;
+
+    padding: 15px;
+
+    border-radius: var(--radius-round);
+
+    background: var(--primary);
+
+    color: var(--text-white);
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: var(--transition-normal);
+
+}
+
+.mobile-btn:hover {
+
+    background: var(--primary-hover);
+
+}
+
+/*=====================================================
+HAMBURGER ANIMATION
+=====================================================*/
+
+.hamburger.active span:nth-child(1) {
+
+    transform: translateY(8px) rotate(45deg);
+
+}
+
+.hamburger.active span:nth-child(2) {
+
+    opacity: 0;
+
+}
+
+.hamburger.active span:nth-child(3) {
+
+    transform: translateY(-8px) rotate(-45deg);
+
+}
+
+/*=====================================================
+RESPONSIVE
+=====================================================*/
+
+@media(max-width:1100px) {
+
+    .nav-links {
+
+        gap: 24px;
+
+    }
+
+}
+
+@media(max-width:992px) {
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+    .profile {
+
+        display: none;
+
+    }
+
+    .create-btn {
+
+        display: none;
+
+    }
+
+    .hamburger {
+
+        display: flex;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .container {
+
+        width: 94%;
+
+    }
+
+    .navbar .container {
+
+        height: 72px;
+
+    }
+
+    .mobile-menu {
+
+        top: 72px;
+
+    }
+
+    .logo-icon {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 18px;
+
+    }
+
+    .logo span {
+
+        font-size: 24px;
+
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .notification {
+
+        display: none;
+
+    }
+
+    .logo span {
+
+        font-size: 22px;
+
+    }
+
+    .mobile-menu {
+
+        padding: 22px;
+
+    }
+
+}
+
+/*=====================================================
+SCROLLBAR
+=====================================================*/
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+::-webkit-scrollbar-track {
+
+    background: var(--scrollbar-bg);
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--scrollbar-thumb);
+
+    border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--scrollbar-thumb-hover);
+
+}
+
+/*=====================================================
+SELECTION
+=====================================================*/
+
+::selection {
+
+    background: var(--primary);
+
+    color: var(--text-white);
+
+}
