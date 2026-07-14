@@ -1,0 +1,76 @@
+/* =========================================================
+   responsive.css
+   Owner: Shashank Mishra
+   Functional first pass for tablet and mobile. Scoped as
+   "works and is usable" — full responsive polish belongs to
+   the Refinement Team's later pass.
+   ========================================================= */
+
+/* ---------------- Tablet (<= 1024px) ---------------- */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 30;
+  }
+  .sidebar.is-open { transform: translateX(0); }
+
+  .sidebar-toggle { display: flex; }
+
+  .stats-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .stat-value { font-size: 26px; }
+
+  .content { padding: 22px 20px 40px; }
+  .topbar { padding: 18px 20px; }
+}
+
+/* ---------------- Small tablet / large phone (<= 768px) ---------------- */
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-field { width: 100%; }
+
+  .event-count { align-self: flex-end; }
+
+  .form-panel { width: 100%; max-width: 100%; }
+
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ---------------- Mobile (<= 520px) ---------------- */
+@media (max-width: 520px) {
+  .topbar-heading h1 { font-size: 18px; }
+  .topbar-heading p { display: none; }
+
+  .btn-primary .btn-text { display: none; }
+
+  .stats-row { grid-template-columns: 1fr; }
+
+  .stat-card { padding: 16px 18px; }
+
+  .event-table { min-width: 520px; }
+
+  .modal-box { padding: 24px 20px; width: 92vw; }
+
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+  .toast { width: 100%; }
+}

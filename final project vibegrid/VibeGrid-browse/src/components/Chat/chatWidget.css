@@ -1,0 +1,577 @@
+/* =====================================================
+   CHAT BUBBLE STYLES (BOT & USER)
+===================================================== */
+
+.eh-chat-bubble-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 4px;
+  animation: eh-bubble-entrance var(--transition-normal) forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes eh-bubble-entrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Row alignment based on sender */
+.eh-chat-bubble-row.is-user {
+  justify-content: flex-end;
+}
+
+.eh-chat-bubble-row.is-bot {
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+/* Bot Avatar styling */
+.eh-chat-bubble-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-round);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Bubble content wrapper */
+.eh-chat-bubble-content-wrapper {
+  max-width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.eh-chat-bubble-row.is-user .eh-chat-bubble-content-wrapper {
+  align-items: flex-end;
+}
+
+.eh-chat-bubble-row.is-bot .eh-chat-bubble-content-wrapper {
+  align-items: flex-start;
+}
+
+/* The actual text container bubble */
+.eh-chat-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Custom rounded corners depending on sender */
+.eh-chat-bubble-row.is-user .eh-chat-bubble {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border-bottom-right-radius: 2px;
+}
+
+.eh-chat-bubble-row.is-bot .eh-chat-bubble {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+/* Bold overrides within chat bubble content */
+.eh-chat-bubble strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+/* Timestamps for messages */
+.eh-chat-bubble-time {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding: 0 4px;
+}
+/* =====================================================
+   CHAT WIDGET HEADER STYLE
+===================================================== */
+
+.eh-chat-header {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-xs);
+  user-select: none;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+/* Brand and status info */
+.eh-chat-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eh-chat-header-icon {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+}
+
+.eh-chat-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.eh-chat-header-title {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.eh-chat-header-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.eh-chat-header-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #55f06e; /* high visibility green */
+  border-radius: var(--radius-round);
+  box-shadow: 0 0 8px #55f06e;
+  display: inline-block;
+  animation: eh-blink 2s infinite ease-in-out;
+}
+
+@keyframes eh-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Header action buttons */
+.eh-chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eh-chat-header-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  outline: none;
+}
+
+.eh-chat-header-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+}
+
+.eh-chat-header-btn:active {
+  transform: scale(0.92);
+}
+
+.eh-chat-header-btn:focus-visible {
+  outline: 2px solid var(--text-white);
+}
+/* =====================================================
+   CHAT INPUT CONTROLS STYLE
+===================================================== */
+
+.eh-chat-input-container {
+  padding: 12px 16px;
+  background-color: var(--surface);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  height: 64px;
+}
+
+/* Chat text entry box */
+.eh-chat-input-field {
+  flex: 1;
+  border: 1px solid var(--input-border);
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  outline: none;
+  resize: none;
+  height: 38px;
+  box-sizing: border-box;
+  line-height: 1.2;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.eh-chat-input-field::placeholder {
+  color: var(--input-placeholder);
+}
+
+.eh-chat-input-field:focus {
+  border-color: var(--input-focus);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 3px rgba(228, 61, 18, 0.15);
+}
+
+/* Submit message button */
+.eh-chat-send-btn {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), opacity var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  flex-shrink: 0;
+}
+
+.eh-chat-send-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 10px rgba(228, 61, 18, 0.2);
+}
+
+.eh-chat-send-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.95);
+}
+
+.eh-chat-send-btn:disabled {
+  background: var(--border-dark);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.eh-chat-send-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+/* =====================================================
+   CHAT MESSAGES CONTAINER & SCROLLBAR
+===================================================== */
+
+.eh-chat-messages-container {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling matching specification */
+.eh-chat-messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.eh-chat-messages-container::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+.eh-chat-messages-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-round);
+}
+
+.eh-chat-messages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Suggested prompts list inside the messages stream */
+.eh-chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  padding-left: 36px; /* offset matching bot avatar width + gap */
+  animation: eh-fade-in 0.3s ease-out;
+}
+
+.eh-chat-suggestion-chip {
+  background-color: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-round);
+  padding: 6px 12px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+  outline: none;
+}
+
+.eh-chat-suggestion-chip:hover {
+  background-color: var(--primary-light);
+  color: var(--text-white);
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(228, 61, 18, 0.15);
+}
+
+.eh-chat-suggestion-chip:active {
+  transform: translateY(0);
+}
+
+.eh-chat-suggestion-chip:focus-visible {
+  outline: 2px solid var(--primary);
+}
+
+/* General Fade animation */
+@keyframes eh-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =====================================================
+   CHAT WIDGET CONTAINER & FLOATING TRIGGER BUTTON
+===================================================== */
+
+/* Floating chat button trigger */
+.eh-chat-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-round);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(228, 61, 18, 0.4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-normal);
+  z-index: 1000;
+  outline: none;
+}
+
+.eh-chat-trigger:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 12px 32px rgba(228, 61, 18, 0.55);
+}
+
+.eh-chat-trigger:active {
+  transform: scale(0.95);
+}
+
+.eh-chat-trigger:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Red notification badge on the trigger button */
+.eh-chat-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--highlight);
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--surface);
+  box-shadow: var(--shadow-xs);
+  animation: eh-pulse 2s infinite;
+}
+
+@keyframes eh-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 177, 29, 0.6);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(239, 177, 29, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 177, 29, 0);
+  }
+}
+
+/* Chat window overlay */
+.eh-chat-window {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 360px;
+  height: 520px;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  transform-origin: bottom right;
+  transition: transform var(--transition-normal), opacity var(--transition-normal), visibility var(--transition-normal);
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  visibility: hidden;
+}
+
+/* Open state */
+.eh-chat-window.is-open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  visibility: visible;
+}
+
+/* Minimized state */
+.eh-chat-window.is-minimized {
+  height: 60px;
+  width: 280px;
+  transform: translateY(20px);
+}
+
+.eh-chat-window.is-minimized .eh-chat-messages-container,
+.eh-chat-window.is-minimized .eh-chat-input-container {
+  display: none !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .eh-chat-window {
+    width: 320px;
+    right: 16px;
+    bottom: 84px;
+  }
+  .eh-chat-trigger {
+    bottom: 16px;
+    right: 16px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eh-chat-window {
+    width: calc(100% - 32px);
+    right: 16px;
+    bottom: 80px;
+    height: 80vh;
+    max-height: 540px;
+  }
+  .eh-chat-window.is-minimized {
+    width: 200px;
+    height: 56px;
+  }
+}
+/* =====================================================
+   TYPING INDICATOR DOTS ANIMATION
+===================================================== */
+
+.eh-typing-indicator-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  border-top-left-radius: 4px;
+  box-shadow: var(--shadow-xs);
+  width: fit-content;
+  animation: eh-indicator-entrance 0.25s ease-out;
+}
+
+@keyframes eh-indicator-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Three bouncing dots wrapper */
+.eh-typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.eh-typing-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--primary);
+  border-radius: var(--radius-round);
+  opacity: 0.6;
+  animation: eh-bounce 1.4s infinite ease-in-out both;
+}
+
+.eh-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.eh-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes eh-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}

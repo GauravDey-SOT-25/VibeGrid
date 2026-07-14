@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard · VibeGrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="admin/css/style.css" />
+<link rel="stylesheet" href="admin/css/responsive.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ============ SIDEBAR (Anurag) ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="sidebar-brand" style="text-decoration: none; color: inherit;">
+      <div class="brand-logo-container" style="width: 32px; height: 32px; border-radius: var(--radius-xs); overflow: hidden; display: flex; align-items: center; justify-content: center; background: none; border: 1px solid var(--border-light); flex-shrink: 0; margin-right: 12px;">
+        <img src="./logo.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <span class="brand-name">VibeGrid</span>
+    </a>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item is-active" id="navDashboard">
+        <span class="nav-notch"></span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" id="navEvents">
+        <span class="nav-notch"></span>
+        <span class="nav-label">Events</span>
+      </a>
+      <a href="#" class="nav-item" id="navAttendees">
+        <span class="nav-notch"></span>
+        <span class="nav-label">Attendees</span>
+      </a>
+      <a href="#" class="nav-item" id="navSettings">
+        <span class="nav-notch"></span>
+        <span class="nav-label">Settings</span>
+      </a>
+      <a href="index.html" class="nav-item">
+        <span class="nav-notch"></span>
+        <span class="nav-label">← Exit Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-chip">
+        <span class="admin-avatar">A</span>
+        <div>
+          <div class="admin-name">Admin User</div>
+          <div class="admin-role">Event Organizer</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+
+    <!-- ============ TOP BAR (Anurag) ============ -->
+    <header class="topbar">
+      <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="topbar-heading">
+        <h1>Event Dashboard</h1>
+        <p>Manage every listing on VibeGrid from one place.</p>
+      </div>
+      <button class="btn btn-primary" id="addEventBtn">
+        <span class="btn-plus">+</span> <span class="btn-text">Add Event</span>
+      </button>
+    </header>
+
+    <main class="content">
+
+      <!-- ============ STAT CARDS (Anurag) — ticket-stub signature ============ -->
+      <section class="stats-row" id="statsRow" aria-label="Overview">
+        <div class="stat-card">
+          <div class="stat-label">Total Events</div>
+          <div class="stat-value" id="statTotalEvents">0</div>
+          <div class="stat-notch stat-notch-left"></div>
+          <div class="stat-notch stat-notch-right"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Registrations</div>
+          <div class="stat-value" id="statTotalAttendees">0</div>
+          <div class="stat-notch stat-notch-left"></div>
+          <div class="stat-notch stat-notch-right"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Upcoming (7 days)</div>
+          <div class="stat-value" id="statUpcoming">0</div>
+          <div class="stat-notch stat-notch-left"></div>
+          <div class="stat-notch stat-notch-right"></div>
+        </div>
+      </section>
+
+      <!-- ============ EVENT TABLE (Karan) ============ -->
+      <section class="table-card" id="eventsSection">
+        <div class="table-toolbar">
+          <div class="search-field">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.4"/><path d="M11 11L14.5 14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <input type="text" id="eventSearchInput" placeholder="Search by title, category or venue" aria-label="Search events" />
+          </div>
+          <span class="event-count" id="eventCountLabel">0 events</span>
+        </div>
+
+        <div class="table-scroll">
+          <table class="event-table">
+            <thead>
+              <tr>
+                <th class="is-sortable" data-sort-field="title">Event <span class="sort-arrow"></span></th>
+                <th class="is-sortable" data-sort-field="category">Category <span class="sort-arrow"></span></th>
+                <th class="is-sortable" data-sort-field="date">Date <span class="sort-arrow"></span></th>
+                <th>Attendees</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="eventTableBody"></tbody>
+          </table>
+          <div class="empty-state" id="eventTableEmptyState">
+            No events yet.
+            <button class="btn btn-ghost btn-sm" id="addEventFromEmptyState">+ Add your first event</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ATTENDEES TABLE ============ -->
+      <section class="table-card" id="attendeesSection" style="display: none;">
+        <div class="table-toolbar">
+          <div class="search-field">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.4"/><path d="M11 11L14.5 14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <input type="text" id="attendeeSearchInput" placeholder="Search by attendee name, email or event title" aria-label="Search attendees" />
+          </div>
+          <span class="event-count" id="attendeeCountLabel">0 attendees</span>
+        </div>
+
+        <div class="table-scroll">
+          <table class="event-table">
+            <thead>
+              <tr>
+                <th>Attendee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Event</th>
+                <th>Tickets</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="attendeeTableBody"></tbody>
+          </table>
+          <div class="empty-state" id="attendeeTableEmptyState" style="display: none;">
+            No attendees found.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS PANEL ============ -->
+      <section class="settings-card" id="settingsSection" style="display: none; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm);">
+        <form id="adminSettingsForm" style="display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+          
+          <div class="settings-group" style="display: flex; flex-direction: column; gap: 15px;">
+            <h3 style="font-size: 18px; border-bottom: 2px solid var(--border-light); padding-bottom: 8px; margin-bottom: 5px;">General Preferences</h3>
+            
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+              <label for="settings-platformName" style="font-weight: 600; font-size: 14px;">Platform Brand Name</label>
+              <input type="text" id="settings-platformName" placeholder="e.g. VibeGrid" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; background: var(--input-bg); color: var(--text-primary);" />
+            </div>
+
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+              <label for="settings-adminEmail" style="font-weight: 600; font-size: 14px;">Contact Support Email</label>
+              <input type="email" id="settings-adminEmail" placeholder="support@vibegrid.com" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; background: var(--input-bg); color: var(--text-primary);" />
+            </div>
+          </div>
+
+          <div class="settings-group" style="display: flex; flex-direction: column; gap: 15px;">
+            <h3 style="font-size: 18px; border-bottom: 2px solid var(--border-light); padding-bottom: 8px; margin-bottom: 5px;">Visuals & Accent Colors</h3>
+            
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+              <label style="font-weight: 600; font-size: 14px;">Accent Theme Color</label>
+              <div class="color-chips" style="display: flex; gap: 12px; margin-top: 5px;">
+                <button type="button" class="color-chip" data-color="#E43D12" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; background: #E43D12; cursor: pointer; position: relative; transition: transform 0.2s;"></button>
+                <button type="button" class="color-chip" data-color="#3FA34D" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; background: #3FA34D; cursor: pointer; position: relative; transition: transform 0.2s;"></button>
+                <button type="button" class="color-chip" data-color="#2563EB" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; background: #2563EB; cursor: pointer; position: relative; transition: transform 0.2s;"></button>
+                <button type="button" class="color-chip" data-color="#7C3AED" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; background: #7C3AED; cursor: pointer; position: relative; transition: transform 0.2s;"></button>
+                <button type="button" class="color-chip" data-color="#DB2777" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; background: #DB2777; cursor: pointer; position: relative; transition: transform 0.2s;"></button>
+              </div>
+            </div>
+
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 6px; margin-top: 10px;">
+              <label for="settings-theme" style="font-weight: 600; font-size: 14px;">Theme Mode</label>
+              <select id="settings-theme" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; background: var(--input-bg); color: var(--text-primary);">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-group" style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+            <h3 style="font-size: 18px; border-bottom: 2px solid var(--border-light); padding-bottom: 8px; margin-bottom: 5px; color: var(--danger);">System Maintenance</h3>
+            <p style="font-size: 13px; color: var(--text-secondary);">Perform administrative cleanup tasks. Note that resetting database is irreversible.</p>
+            <div>
+              <button type="button" id="btn-reset-db" class="btn btn-danger" style="margin-top: 5px;">Reset Platform Database</button>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 15px; margin-top: 10px; border-top: 1px solid var(--border-light); padding-top: 20px;">
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ============ ADD / EDIT EVENT PANEL (Ashish) ============ -->
+<div class="form-overlay" id="eventFormOverlay" aria-hidden="true">
+  <aside class="form-panel" id="eventFormPanel" role="dialog" aria-labelledby="eventFormHeading">
+    <div class="form-panel-header">
+      <div>
+        <h2 id="eventFormHeading">Add a new event</h2>
+        <p id="eventFormSubheading">Fill in the details below to list a new event.</p>
+      </div>
+      <button class="icon-btn" id="eventFormCloseBtn" aria-label="Close form">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="ticket-perforation" aria-hidden="true"></div>
+
+    <form id="eventForm" class="event-form" novalidate>
+      <div class="form-group">
+        <label for="field-title">Event title</label>
+        <input type="text" id="field-title" placeholder="e.g. Frontend Bootcamp" />
+        <span class="field-error" id="error-title"></span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="field-category">Category</label>
+          <select id="field-category">
+            <option value="">Select a category</option>
+            <option value="Technology">Technology</option>
+            <option value="Music">Music</option>
+            <option value="Business">Business</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="field-error" id="error-category"></span>
+        </div>
+        <div class="form-group">
+          <label for="field-maxAttendees">Max attendees</label>
+          <input type="number" id="field-maxAttendees" min="0" placeholder="e.g. 150" />
+          <span class="field-error" id="error-maxAttendees"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="field-date">Date</label>
+          <input type="date" id="field-date" />
+          <span class="field-error" id="error-date"></span>
+        </div>
+        <div class="form-group">
+          <label for="field-time">Time</label>
+          <input type="time" id="field-time" />
+          <span class="field-error" id="error-time"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="field-venue">Venue</label>
+        <input type="text" id="field-venue" placeholder="e.g. Community Hall" />
+        <span class="field-error" id="error-venue"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="field-imageUrl">Banner image URL <span class="label-optional">(optional)</span></label>
+        <input type="text" id="field-imageUrl" placeholder="https://..." />
+        <span class="field-error" id="error-imageUrl"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="field-description">Description</label>
+        <textarea id="field-description" rows="3" placeholder="What's this event about?"></textarea>
+        <span class="field-error" id="error-description"></span>
+      </div>
+
+      <div class="form-panel-footer">
+        <button type="button" class="btn btn-ghost" id="eventFormCancelBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="eventFormSubmitBtn">Create event</button>
+      </div>
+    </form>
+  </aside>
+</div>
+
+<!-- ============ DELETE CONFIRMATION MODAL (Manish) ============ -->
+<div class="modal-overlay" id="deleteModalOverlay" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-labelledby="deleteModalTitle">
+    <div class="modal-icon">!</div>
+    <h2 id="deleteModalTitle">Delete event?</h2>
+    <p>Are you sure you want to delete <strong id="deleteModalEventTitle"></strong>? This can't be undone.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="deleteModalCancelBtn">Cancel</button>
+      <button class="btn btn-danger" id="deleteModalConfirmBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST CONTAINER (Shashank) ============ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ============ SCRIPTS ============ -->
+<!-- Only the entry-point module is loaded. admin.js imports every other
+     module in the dependency graph (crud -> localStorageService,
+     eventForm -> formValidation/crud/toast, eventTable -> eventForm/deleteModal/crud,
+     deleteModal -> crud/toast). Serve this over http(s):// (e.g. `npx serve`
+     or VS Code Live Server) — browsers block ES module imports over file://. -->
+<script type="module" src="admin/js/admin.js"></script>
+</body>
+</html>

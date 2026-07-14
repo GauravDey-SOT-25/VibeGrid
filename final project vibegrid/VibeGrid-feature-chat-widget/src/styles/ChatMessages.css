@@ -1,0 +1,86 @@
+/* =====================================================
+   CHAT MESSAGES CONTAINER & SCROLLBAR
+===================================================== */
+
+.eh-chat-messages-container {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling matching specification */
+.eh-chat-messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.eh-chat-messages-container::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+.eh-chat-messages-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-round);
+}
+
+.eh-chat-messages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Suggested prompts list inside the messages stream */
+.eh-chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  padding-left: 36px; /* offset matching bot avatar width + gap */
+  animation: eh-fade-in 0.3s ease-out;
+}
+
+.eh-chat-suggestion-chip {
+  background-color: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-round);
+  padding: 6px 12px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+  outline: none;
+}
+
+.eh-chat-suggestion-chip:hover {
+  background-color: var(--primary-light);
+  color: var(--text-white);
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(228, 61, 18, 0.15);
+}
+
+.eh-chat-suggestion-chip:active {
+  transform: translateY(0);
+}
+
+.eh-chat-suggestion-chip:focus-visible {
+  outline: 2px solid var(--primary);
+}
+
+/* General Fade animation */
+@keyframes eh-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

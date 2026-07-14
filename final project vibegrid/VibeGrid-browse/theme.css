@@ -1,0 +1,366 @@
+:root {
+
+    /* =====================================================
+       BRAND COLORS
+    ===================================================== */
+
+    --primary: #E43D12;
+    --primary-hover: #CC3610;
+    --primary-light: #F96A44;
+    --primary-dark: #A92708;
+
+    --secondary: #D6536D;
+    --secondary-hover: #C44761;
+    --secondary-light: #E97F95;
+
+    --accent: #FFA2B6;
+    --accent-light: #FFD2DB;
+    --accent-hover: #F98FA7;
+
+    --highlight: #EFB11D;
+    --highlight-light: #F8D57A;
+    --highlight-dark: #D99A00;
+
+    /* =====================================================
+       BACKGROUNDS
+    ===================================================== */
+
+    --background: #EBE9E1;
+    --background-secondary: #F5F2EC;
+    --background-tertiary: #FAF8F4;
+
+    --surface: #FFFFFF;
+    --surface-hover: #FFFDFC;
+    --surface-secondary: #F8F6F2;
+
+    /* =====================================================
+       TEXT
+    ===================================================== */
+
+    --text-primary: #2B2B2B;
+    --text-secondary: #5A5A5A;
+    --text-muted: #8B8B8B;
+    --text-light: #A6A6A6;
+    --text-white: #FFFFFF;
+
+    /* =====================================================
+       BORDERS
+    ===================================================== */
+
+    --border: #D8D5CB;
+    --border-light: #EAE7DE;
+    --border-dark: #C8C3B7;
+
+    /* =====================================================
+       CARD COLORS
+    ===================================================== */
+
+    --card-bg: #F8F6F2;
+    --card-hover: #FFFFFF;
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    --navbar-bg: rgba(255,255,255,0.92);
+    --navbar-border: rgba(228,61,18,0.08);
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    --btn-primary-bg: var(--primary);
+    --btn-primary-hover: var(--primary-hover);
+    --btn-primary-text: #FFFFFF;
+
+    --btn-secondary-bg: var(--secondary);
+    --btn-secondary-hover: var(--secondary-hover);
+    --btn-secondary-text: #FFFFFF;
+
+    --btn-accent-bg: var(--accent);
+    --btn-accent-hover: var(--accent-hover);
+    --btn-accent-text: #2B2B2B;
+
+    --btn-outline-border: var(--primary);
+    --btn-outline-text: var(--primary);
+
+    /* =====================================================
+       INPUTS
+    ===================================================== */
+
+    --input-bg: #FFFFFF;
+    --input-border: #DDD9CF;
+    --input-focus: var(--primary);
+    --input-placeholder: #9D9D9D;
+
+    /* =====================================================
+       SEARCH PANEL
+    ===================================================== */
+
+    --search-bg: #F7F3EE;
+    --filter-bg: #FFFFFF;
+
+    /* =====================================================
+       EVENT CARD
+    ===================================================== */
+
+    --event-card-bg: #FFFFFF;
+    --event-card-border: #E9E4DA;
+    --event-card-hover: #FFF8F3;
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    --modal-bg: #FFFFFF;
+    --modal-overlay: rgba(0,0,0,0.55);
+
+    /* =====================================================
+       CATEGORY COLORS
+    ===================================================== */
+
+    --category-music: #D6536D;
+    --category-tech: #E43D12;
+    --category-workshop: #EFB11D;
+    --category-conference: #FFA2B6;
+    --category-cultural: #F7B267;
+
+    /* =====================================================
+       STATUS COLORS
+    ===================================================== */
+
+    --success: #3FA34D;
+    --success-bg: #EAF7EC;
+
+    --warning: #EFB11D;
+    --warning-bg: #FFF8DE;
+
+    --danger: #D62828;
+    --danger-bg: #FFE8E8;
+
+    --info: #E43D12;
+    --info-bg: #FFF0EA;
+
+    /* =====================================================
+       BADGES
+    ===================================================== */
+
+    --badge-primary: var(--primary);
+    --badge-secondary: var(--secondary);
+    --badge-highlight: var(--highlight);
+
+    /* =====================================================
+       SHADOWS
+    ===================================================== */
+
+    --shadow-xs: 0 2px 6px rgba(0,0,0,0.05);
+
+    --shadow-sm: 0 6px 15px rgba(0,0,0,0.08);
+
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.10);
+
+    --shadow-lg: 0 18px 45px rgba(0,0,0,0.12);
+
+    --shadow-xl: 0 25px 60px rgba(0,0,0,0.15);
+
+    /* =====================================================
+       HOVER GLOW
+    ===================================================== */
+
+    --glow-primary: rgba(228,61,18,0.25);
+    --glow-secondary: rgba(214,83,109,0.25);
+    --glow-highlight: rgba(239,177,29,0.30);
+
+    /* =====================================================
+       GRADIENTS
+    ===================================================== */
+
+    --gradient-primary:
+        linear-gradient(
+            135deg,
+            #E43D12 0%,
+            #D6536D 100%
+        );
+
+    --gradient-secondary:
+        linear-gradient(
+            135deg,
+            #FFA2B6 0%,
+            #EFB11D 100%
+        );
+
+    --gradient-background:
+        linear-gradient(
+            180deg,
+            #FFFDF9 0%,
+            #F8F6F2 100%
+        );
+
+    --gradient-hero:
+        linear-gradient(
+            135deg,
+            #FFF6F2 0%,
+            #FFEAEF 45%,
+            #FFF7DD 100%
+        );
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    --footer-bg: #F3EEE7;
+    --footer-text: #5A5A5A;
+
+    /* =====================================================
+       SCROLLBAR
+    ===================================================== */
+
+    --scrollbar-bg: #ECE7DE;
+    --scrollbar-thumb: #D6536D;
+    --scrollbar-thumb-hover: #E43D12;
+
+    /* =====================================================
+       TRANSITIONS
+    ===================================================== */
+
+    --transition-fast: .2s ease;
+    --transition-normal: .3s ease;
+    --transition-slow: .5s ease;
+
+    /* =====================================================
+       BORDER RADIUS
+    ===================================================== */
+
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+    --radius-round: 999px;
+}
+
+#main-content {
+    padding: 0;
+    min-height: calc(100vh - 78px);
+    background: var(--background);
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Keep padding on non-landing views */
+#browse-view, #details-view, #registration-view, #my-registrations-view, #login-view {
+    padding: 40px 0;
+}
+
+/* =====================================================
+   DARK MODE SYSTEM
+   ===================================================== */
+body.dark-mode {
+  --background: #121212;
+  --background-secondary: #1a1a1a;
+  --background-tertiary: #222222;
+  
+  --surface: #1e1e1e;
+  --surface-hover: #262626;
+  --surface-secondary: #222222;
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-light: #4b5563;
+  --text-white: #ffffff;
+  
+  --border: #333333;
+  --border-light: #262626;
+  --border-dark: #404040;
+  
+  --card-bg: #1e1e1e;
+  --card-hover: #262626;
+  
+  --input-bg: #121212;
+  --input-border: #333333;
+  
+  --event-card-bg: #1e1e1e;
+  --event-card-border: #262626;
+  --event-card-hover: #222222;
+  
+  --modal-bg: #1e1e1e;
+  
+  --navbar-bg: rgba(30,30,30,0.92);
+}
+
+body.dark-mode .login-card,
+body.dark-mode .registration-container,
+body.dark-mode .search-panel-container,
+body.dark-mode .event-card,
+body.dark-mode .my-registrations-container,
+body.dark-mode #notification-dropdown-menu,
+body.dark-mode #user-profile-dropdown,
+body.dark-mode #reg-tickets,
+body.dark-mode #search-input-field,
+body.dark-mode .filter-btn,
+body.dark-mode .chat-card,
+body.dark-mode .registration-container select,
+body.dark-mode .registration-container input {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+}
+
+body.dark-mode .search-bar {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
+}
+
+body.dark-mode .search-bar input {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .filter-bar {
+    background-color: var(--background-secondary) !important;
+}
+
+body.dark-mode input, 
+body.dark-mode select, 
+body.dark-mode textarea {
+    background-color: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--input-border) !important;
+}
+
+body.dark-mode .event-details-container {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .reset-btn {
+    background-color: #2b2b2b !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+}
+
+body.dark-mode .reset-btn:hover {
+    background-color: #3b3b3b !important;
+}
+
+body.dark-mode .hero-section {
+    background: linear-gradient(135deg, #1e1512 0%, #1e1114 45%, #1f1a0e 100%) !important;
+}
+
+body.dark-mode .stat-card {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
+}
+
+body.dark-mode .stats-grid .card {
+    background-color: var(--surface) !important;
+}
+
+body.dark-mode .event-details-grid {
+    background-color: var(--surface) !important;
+}
+
+body.dark-mode .detail-sidebar .sidebar-card {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
+}

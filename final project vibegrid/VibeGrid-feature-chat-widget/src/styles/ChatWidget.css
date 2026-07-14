@@ -1,0 +1,143 @@
+/* =====================================================
+   CHAT WIDGET CONTAINER & FLOATING TRIGGER BUTTON
+===================================================== */
+
+/* Floating chat button trigger */
+.eh-chat-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-round);
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(228, 61, 18, 0.4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-normal);
+  z-index: 1000;
+  outline: none;
+}
+
+.eh-chat-trigger:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 12px 32px rgba(228, 61, 18, 0.55);
+}
+
+.eh-chat-trigger:active {
+  transform: scale(0.95);
+}
+
+.eh-chat-trigger:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Red notification badge on the trigger button */
+.eh-chat-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--highlight);
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--surface);
+  box-shadow: var(--shadow-xs);
+  animation: eh-pulse 2s infinite;
+}
+
+@keyframes eh-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 177, 29, 0.6);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(239, 177, 29, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 177, 29, 0);
+  }
+}
+
+/* Chat window overlay */
+.eh-chat-window {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 360px;
+  height: 520px;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  transform-origin: bottom right;
+  transition: transform var(--transition-normal), opacity var(--transition-normal), visibility var(--transition-normal);
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  visibility: hidden;
+}
+
+/* Open state */
+.eh-chat-window.is-open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  visibility: visible;
+}
+
+/* Minimized state */
+.eh-chat-window.is-minimized {
+  height: 60px;
+  width: 280px;
+  transform: translateY(20px);
+}
+
+.eh-chat-window.is-minimized .eh-chat-messages-container,
+.eh-chat-window.is-minimized .eh-chat-input-container {
+  display: none !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .eh-chat-window {
+    width: 320px;
+    right: 16px;
+    bottom: 84px;
+  }
+  .eh-chat-trigger {
+    bottom: 16px;
+    right: 16px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eh-chat-window {
+    width: calc(100% - 32px);
+    right: 16px;
+    bottom: 80px;
+    height: 80vh;
+    max-height: 540px;
+  }
+  .eh-chat-window.is-minimized {
+    width: 200px;
+    height: 56px;
+  }
+}
