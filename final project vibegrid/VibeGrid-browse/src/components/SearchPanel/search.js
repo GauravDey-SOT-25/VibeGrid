@@ -1,4 +1,5 @@
 import { getAllEvents } from '../../services/eventsService.js';
+import { getRegistrationsKey } from '../../pages/Registration/registration.js';
 
 const filterContainer = document.getElementById("filter-container");
 const eventsContainer = document.getElementById("events-container");
@@ -270,7 +271,7 @@ locationFilter.addEventListener("keypress", function (e) {
 
 function isRegistered(eventId) {
   try {
-    const registrations = JSON.parse(localStorage.getItem("registered_event_ids") || "[]");
+    const registrations = JSON.parse(localStorage.getItem(getRegistrationsKey()) || "[]");
     return registrations.includes(eventId);
   } catch {
     return false;

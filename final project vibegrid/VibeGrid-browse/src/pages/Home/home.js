@@ -20,6 +20,8 @@ export function mountHome() {
         }
     });
 
+    const isLoggedIn = !!localStorage.getItem("user_session");
+
     landingView.innerHTML = `
         <section class="hero-section">
             <div class="hero-overlay"></div>
@@ -33,9 +35,15 @@ export function mountHome() {
                     <a href="#/browse" class="hero-btn hero-btn-primary">
                         <i class="fa-solid fa-compass"></i> Explore Events
                     </a>
+                    ${isLoggedIn ? `
+                    <a href="#/my-registrations" class="hero-btn hero-btn-secondary">
+                        <i class="fa-solid fa-user"></i> My Profile
+                    </a>
+                    ` : `
                     <a href="#/login" class="hero-btn hero-btn-secondary">
                         <i class="fa-solid fa-user"></i> Login / Signup
                     </a>
+                    `}
                 </div>
             </div>
         </section>

@@ -10,9 +10,24 @@ import { incrementRegistration } from '../../services/eventsService.js';
 // DATA PERSISTENCE
 // ==========================
 
+export function getRegistrationsKey() {
+    const session = localStorage.getItem("user_session");
+    if (session) {
+        try {
+            const user = JSON.parse(session);
+            if (user && user.email) {
+                return `registered_event_ids_${user.email}`;
+            }
+        } catch (e) {
+            console.error('Error parsing user session:', e);
+        }
+    }
+    return 'registered_event_ids';
+}
+
 export function loadRegistrations() {
     try {
-        const data = localStorage.getItem('registered_event_ids');
+        const data = localStorage.getItem(getRegistrationsKey());
         return data ? JSON.parse(data) : [];
     } catch (error) {
         console.error('Failed to load registrations from localStorage:', error);
@@ -22,7 +37,7 @@ export function loadRegistrations() {
 
 export function saveRegistrations(registrations) {
     try {
-        localStorage.setItem('registered_event_ids', JSON.stringify(registrations));
+        localStorage.setItem(getRegistrationsKey(), JSON.stringify(registrations));
     } catch (error) {
         console.error('Failed to save registrations to localStorage:', error);
     }
@@ -113,6 +128,16 @@ export function mountRegistrationForm(eventId, eventsList) {
         });
     };
 
+    const userSession = localStorage.getItem("user_session");
+    let loggedInUser = null;
+    if (userSession) {
+        try {
+            loggedInUser = JSON.parse(userSession);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     regView.innerHTML = `
         <div class="registration-container" style="max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); font-family: 'Outfit', sans-serif;">
             <div style="text-align: center; margin-bottom: 25px;">
@@ -132,12 +157,12 @@ export function mountRegistrationForm(eventId, eventsList) {
             <form id="event-reg-form" style="display: flex; flex-direction: column; gap: 18px;">
                 <div style="display: flex; flex-direction: column; gap: 6px;">
                     <label style="font-weight: 600; font-size: 14px; color: var(--text-primary);">Full Name</label>
-                    <input type="text" id="reg-name" required placeholder="John Doe" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;">
+                    <input type="text" id="reg-name" required placeholder="John Doe" value="${loggedInUser ? (loggedInUser.name || '') : ''}" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;">
                 </div>
                 
                 <div style="display: flex; flex-direction: column; gap: 6px;">
                     <label style="font-weight: 600; font-size: 14px; color: var(--text-primary);">Email Address</label>
-                    <input type="email" id="reg-email" required placeholder="john@example.com" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;">
+                    <input type="email" id="reg-email" required placeholder="john@example.com" value="${loggedInUser ? loggedInUser.email : ''}" style="padding: 12px; border: 1px solid var(--input-border); border-radius: var(--radius-xs); font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;">
                 </div>
                 
                 <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -211,6 +236,26 @@ export function mountRegistrationForm(eventId, eventsList) {
         // Save registration details in localStorage
         registrations.push(eventId);
         saveRegistrations(registrations);
+
+        // Save detailed registration record for admin panel
+        try {
+            const allRegs = JSON.parse(localStorage.getItem('eventPlatform.registrations') || '[]');
+            const regId = 'REG-' + Math.floor(100000 + Math.random() * 900000);
+            const regDate = new Date().toISOString().split('T')[0];
+            allRegs.push({
+                id: regId,
+                eventId: eventId,
+                eventTitle: event.title,
+                name: name,
+                email: email,
+                phone: phone,
+                tickets: tickets,
+                date: regDate
+            });
+            localStorage.setItem('eventPlatform.registrations', JSON.stringify(allRegs));
+        } catch (err) {
+            console.error('Failed to save detailed registration for admin:', err);
+        }
 
         // Update attendee count in the unified events database
         incrementRegistration(eventId, tickets);
@@ -301,7 +346,7 @@ export function mountMyRegistrations(eventsList) {
     const clearBtn = document.getElementById('clear-storage-btn');
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
-            localStorage.removeItem('registered_event_ids');
+            localStorage.removeItem(getRegistrationsKey());
             localStorage.removeItem('event_attendee_counts');
             localStorage.removeItem('eventPlatform.events');
             showToast('Registrations cleared successfully!', 'info');

@@ -50,7 +50,7 @@ export class ChatWidget {
     const welcomeMsg = {
       id: 'welcome-msg',
       sender: 'bot',
-      text: `👋 **Welcome to EventHub Support!** I'm your interactive event assistant.\n\nYou can ask me about upcoming events, categories, registrations, or use one of my quick commands below:\n\n` +
+      text: `👋 **Welcome to VibeGrid Support!** I'm your interactive event assistant.\n\nYou can ask me about upcoming events, categories, registrations, or use one of my quick commands below:\n\n` +
             `• **"tech"** - Discover tech events & summits\n` +
             `• **"music"** - Browse concerts & live music\n` +
             `• **"workshop"** - Find bootcamps & hands-on classes\n` +
@@ -69,13 +69,13 @@ export class ChatWidget {
     // Build overall widget template
     root.innerHTML = `
       <!-- Trigger button -->
-      <button type="button" class="eh-chat-trigger" id="eh-chat-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="Open EventHub Support Chat">
+      <button type="button" class="eh-chat-trigger" id="eh-chat-trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="Open VibeGrid Support Chat">
         ${ICON_MSG_SQUARE}
         <span class="eh-chat-badge" id="eh-chat-badge" style="display: none;">0</span>
       </button>
 
       <!-- Chat window container -->
-      <div class="eh-chat-window" id="eh-chat-window" role="dialog" aria-label="EventHub Customer Support Chatbot" style="display: none;">
+      <div class="eh-chat-window" id="eh-chat-window" role="dialog" aria-label="VibeGrid Customer Support Chatbot" style="display: none;">
         <!-- Header -->
         <div class="eh-chat-header" role="banner" aria-label="Chat header bar">
           <div class="eh-chat-header-brand">
@@ -83,7 +83,7 @@ export class ChatWidget {
               ${ICON_MSG_SQUARE}
             </div>
             <div class="eh-chat-header-info">
-              <span class="eh-chat-header-title">EventHub Assistant</span>
+              <span class="eh-chat-header-title">VibeGrid Assistant</span>
               <div class="eh-chat-header-status">
                 <span class="eh-chat-header-status-dot" aria-hidden="true"></span>
                 <span>Online Agent</span>

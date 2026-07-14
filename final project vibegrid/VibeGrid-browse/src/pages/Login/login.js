@@ -60,7 +60,7 @@ function renderLoginForm(container, signupMode = false) {
                 <!-- SIGNUP FORM -->
                 <form id="signup-form" class="auth-form" style="display: ${signupMode ? 'flex' : 'none'};">
                     <h2>Create Account</h2>
-                    <p class="auth-subtitle">Join EventHub to discover and register for premium events</p>
+                    <p class="auth-subtitle">Join VibeGrid to discover and register for premium events</p>
                     
                     <div class="input-group">
                         <label>Full Name</label>

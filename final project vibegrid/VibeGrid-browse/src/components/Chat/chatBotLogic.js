@@ -11,7 +11,7 @@ export function getBotResponse(userMessage) {
   // Help command
   if (query.includes('help') || query === 'commands' || query === 'hi' || query === 'hello' || query === 'hey') {
     return {
-      text: `👋 **Welcome to EventHub Support!** I'm your interactive event assistant.\n\nYou can ask me about upcoming events, categories, registrations, or use one of my quick commands below:\n\n` +
+      text: `👋 **Welcome to VibeGrid Support!** I'm your interactive event assistant.\n\nYou can ask me about upcoming events, categories, registrations, or use one of my quick commands below:\n\n` +
             `• **"tech"** - Discover tech events & summits\n` +
             `• **"music"** - Browse concerts & live music\n` +
             `• **"workshop"** - Find bootcamps & hands-on classes\n` +
@@ -130,7 +130,7 @@ export function getBotResponse(userMessage) {
   // Register command
   if (query.includes('register') || query.includes('book') || query.includes('ticket') || query.includes('signup') || query.includes('sign up')) {
     return {
-      text: `🎟️ **How to Register for Events on EventHub:**\n\n` +
+      text: `🎟️ **How to Register for Events on VibeGrid:**\n\n` +
             `1. **Browse Events**: Scroll through our list of 50+ hand-picked events on the homepage.\n` +
             `2. **Click "Register Now"**: On any upcoming event card, click the orange registration button.\n` +
             `3. **Submit Your Details**: Fill in your Name and Email in the modal form, then click "Confirm Registration".\n` +
@@ -143,9 +143,9 @@ export function getBotResponse(userMessage) {
   // Contact command
   if (query.includes('contact') || query.includes('support') || query.includes('phone') || query.includes('email') || query.includes('helpdesk')) {
     return {
-      text: `📞 **Contact EventHub Support:**\n\n` +
+      text: `📞 **Contact VibeGrid Support:**\n\n` +
             `Have a question or need assistance with your booking?\n\n` +
-            `• 📧 **Email Support:** support@eventhub.com\n` +
+            `• 📧 **Email Support:** support@vibegrid.com\n` +
             `• 📱 **Phone Helpline:** +1 (800) 555-EVNT (Mon-Fri, 9 AM - 6 PM EST)\n` +
             `• 🏢 **HQ Address:** 100 Innovation Way, Suite 400, Austin, TX 78701\n\n` +
             `We will respond to all email inquiries within 24 hours.`,

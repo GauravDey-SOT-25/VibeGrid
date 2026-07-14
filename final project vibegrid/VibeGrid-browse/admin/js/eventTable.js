@@ -120,7 +120,7 @@ export function renderEventTable(events) {
 function handleTableClick(e) {
   const btn = e.target.closest("button[data-action]");
   if (!btn) return;
-  const id = Number(btn.dataset.id);
+  const id = btn.dataset.id;
   const events = crud.getEvents();
   const evt = events.find((x) => x.id === id);
   if (!evt) return;

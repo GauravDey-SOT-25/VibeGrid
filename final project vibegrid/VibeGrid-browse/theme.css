@@ -240,8 +240,127 @@
 }
 
 #main-content {
-    padding: 40px 0;
+    padding: 0;
     min-height: calc(100vh - 78px);
     background: var(--background);
     font-family: 'Outfit', sans-serif;
+}
+
+/* Keep padding on non-landing views */
+#browse-view, #details-view, #registration-view, #my-registrations-view, #login-view {
+    padding: 40px 0;
+}
+
+/* =====================================================
+   DARK MODE SYSTEM
+   ===================================================== */
+body.dark-mode {
+  --background: #121212;
+  --background-secondary: #1a1a1a;
+  --background-tertiary: #222222;
+  
+  --surface: #1e1e1e;
+  --surface-hover: #262626;
+  --surface-secondary: #222222;
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-light: #4b5563;
+  --text-white: #ffffff;
+  
+  --border: #333333;
+  --border-light: #262626;
+  --border-dark: #404040;
+  
+  --card-bg: #1e1e1e;
+  --card-hover: #262626;
+  
+  --input-bg: #121212;
+  --input-border: #333333;
+  
+  --event-card-bg: #1e1e1e;
+  --event-card-border: #262626;
+  --event-card-hover: #222222;
+  
+  --modal-bg: #1e1e1e;
+  
+  --navbar-bg: rgba(30,30,30,0.92);
+}
+
+body.dark-mode .login-card,
+body.dark-mode .registration-container,
+body.dark-mode .search-panel-container,
+body.dark-mode .event-card,
+body.dark-mode .my-registrations-container,
+body.dark-mode #notification-dropdown-menu,
+body.dark-mode #user-profile-dropdown,
+body.dark-mode #reg-tickets,
+body.dark-mode #search-input-field,
+body.dark-mode .filter-btn,
+body.dark-mode .chat-card,
+body.dark-mode .registration-container select,
+body.dark-mode .registration-container input {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+}
+
+body.dark-mode .search-bar {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
+}
+
+body.dark-mode .search-bar input {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .filter-bar {
+    background-color: var(--background-secondary) !important;
+}
+
+body.dark-mode input, 
+body.dark-mode select, 
+body.dark-mode textarea {
+    background-color: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--input-border) !important;
+}
+
+body.dark-mode .event-details-container {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .reset-btn {
+    background-color: #2b2b2b !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+}
+
+body.dark-mode .reset-btn:hover {
+    background-color: #3b3b3b !important;
+}
+
+body.dark-mode .hero-section {
+    background: linear-gradient(135deg, #1e1512 0%, #1e1114 45%, #1f1a0e 100%) !important;
+}
+
+body.dark-mode .stat-card {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
+}
+
+body.dark-mode .stats-grid .card {
+    background-color: var(--surface) !important;
+}
+
+body.dark-mode .event-details-grid {
+    background-color: var(--surface) !important;
+}
+
+body.dark-mode .detail-sidebar .sidebar-card {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
 }

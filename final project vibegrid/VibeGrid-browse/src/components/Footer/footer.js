@@ -10,9 +10,9 @@ function Footer() {
             <div class="footer-container">
                 <!-- Brand Info Section -->
                 <div class="footer-section brand-info">
-                    <div class="footer-logo">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <span>EventHub</span>
+                    <div class="footer-logo" style="display: flex; align-items: center; gap: 10px;">
+                        <img src="./logo.jpg" alt="Logo" style="width: 32px; height: 32px; object-fit: cover; border-radius: var(--radius-xs); border: 1px solid var(--border-light);" />
+                        <span>VibeGrid</span>
                     </div>
                     <p class="brand-description">
                         Connecting people, creating memories. Discover, join, and relive every moment. From hackathons to festivals, never miss what matters.
@@ -51,7 +51,7 @@ function Footer() {
                         <li>
                             <i class="fa-solid fa-envelope"></i>
                             <div>
-                                <a href="mailto:support@eventhub.com">support@eventhub.com</a>
+                                <a href="mailto:support@vibegrid.com">support@vibegrid.com</a>
                             </div>
                         </li>
                         <li>
@@ -68,7 +68,7 @@ function Footer() {
             <!-- Footer Bottom bar -->
             <div class="footer-bottom">
                 <div class="bottom-container">
-                    <p>&copy; ${new Date().getFullYear()} EventHub. All rights reserved.</p>
+                    <p>&copy; ${new Date().getFullYear()} VibeGrid. All rights reserved.</p>
                     <div class="bottom-links">
                         <a href="#/">Privacy Policy</a>
                         <a href="#/">Terms of Service</a>

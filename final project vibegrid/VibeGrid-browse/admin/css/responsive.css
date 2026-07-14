@@ -57,7 +57,7 @@
   .topbar-heading h1 { font-size: 18px; }
   .topbar-heading p { display: none; }
 
-  .btn-primary span.btn-plus + text { display: none; }
+  .btn-primary .btn-text { display: none; }
 
   .stats-row { grid-template-columns: 1fr; }
 

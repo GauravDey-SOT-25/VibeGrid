@@ -3,6 +3,7 @@
  *
  * Exportable view for showing Event Details dynamically inside the SPA.
  */
+import { getRegistrationsKey } from '../Registration/registration.js';
 
 export function mountEventDetails(eventId, eventsList) {
     const detailsView = document.getElementById("details-view");
@@ -31,7 +32,7 @@ export function mountEventDetails(eventId, eventsList) {
     // Helper functions
     const isRegistered = (id) => {
         try {
-            const regs = JSON.parse(localStorage.getItem("registered_event_ids") || "[]");
+            const regs = JSON.parse(localStorage.getItem(getRegistrationsKey()) || "[]");
             return regs.includes(id);
         } catch { return false; }
     };
@@ -84,7 +85,7 @@ export function mountEventDetails(eventId, eventsList) {
 
                     <div class="detail-card">
                         <span>Organizer</span>
-                        <strong id="eventOrganizer">${event.organizer || "EventHub Partner"}</strong>
+                        <strong id="eventOrganizer">${event.organizer || "VibeGrid Partner"}</strong>
                     </div>
                 </div>
 
